@@ -1,6 +1,6 @@
 import { Form } from "./components/Form/index.jsx";
 import { List } from "./components/List/index.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import "./App.css";
 import { uid } from "uid";
@@ -9,18 +9,27 @@ function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
-  const [weather, setWeather] = useLocalStorageState("weather", {});
+  const [isGoodWeather, setIsGoodWeather] = useState(true);
+  // const [weather, setWeather] = useLocalStorageState("weather", {});
+  console.log(isGoodWeather);
 
-  let isGoodWeather = true;
+  // let isGoodWeather = true;
 
   useEffect(() => {
     async function getWeather() {
-      const response = await fetch(
-        "https://example-apis.vercel.app/api/weather"
-      );
-      let weatherData = await response.json();
-      isGoodWeather = weatherData.isGoodWeather;
+      try {
+        const response = await fetch(
+          "https://example-apis.vercel.app/api/weather"
+        );
+        let weatherData = await response.json();
+        console.log("weather", weatherData);
+        setIsGoodWeather(weatherData.isGoodWeather);
+      } catch (err) {
+        console.error("Failed to fetch weather data: ", err);
+        setIsGoodWeather(true);
+      }
     }
+
     getWeather();
   }, []);
 
