@@ -1,0 +1,20 @@
+.weather__header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.weather__icon {
+  width: 50%;
+  font-size: 48px;
+}
+
+.weather__temp {
+  width: 50%;
+  font-size: 48px;
+}
+
+.weather__title {
+  width: 100%;
+}
