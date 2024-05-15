@@ -1,6 +1,5 @@
-import { uid } from "uid";
-
-export function List({ list, filter }) {
+export function List({ list, filter, onDeleteActivity }) {
+  console.log(list);
   return (
     <>
       {" "}
@@ -11,10 +10,12 @@ export function List({ list, filter }) {
       )}
       <ul>
         {list.map((item) => {
-          //   if (item.isForGoodWeather === filter) {
-          return <li key={uid()}>{item.name}</li>;
-          //   }
-          //   return;
+          return (
+            <li key={item.id}>
+              <p>{item.name}</p>
+              <button onClick={() => onDeleteActivity(item.id)}>x</button>
+            </li>
+          );
         })}
       </ul>
     </>
