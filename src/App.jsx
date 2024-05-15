@@ -25,8 +25,11 @@ function App() {
         console.log("weather", weatherData);
         setIsGoodWeather(weatherData.isGoodWeather);
       } catch (err) {
-        console.error("Failed to fetch weather data: ", err);
-        setIsGoodWeather(true);
+        console.log(
+          "Failed to fetch weather data, defaulting weather to bad weather: ",
+          err
+        );
+        setIsGoodWeather(false);
       }
     }
 
