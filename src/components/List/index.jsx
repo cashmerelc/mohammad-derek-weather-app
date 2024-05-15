@@ -2,7 +2,6 @@ export function List({ list, filter, onDeleteActivity }) {
   console.log(list);
   return (
     <>
-      {" "}
       {filter.isGoodWeather === true ? (
         <>
           <div className="weather__header">

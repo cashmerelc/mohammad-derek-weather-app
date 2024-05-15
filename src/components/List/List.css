@@ -20,6 +20,8 @@
 }
 
 ul {
+  max-width: 350px;
+  margin-bottom: 200px;
   list-style-type: none;
 }
 
