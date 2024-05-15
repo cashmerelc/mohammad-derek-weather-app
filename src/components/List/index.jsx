@@ -3,10 +3,18 @@ export function List({ list, filter, onDeleteActivity }) {
   return (
     <>
       {" "}
-      {filter === true ? (
-        <h2>The weather is awesome, go out and do:</h2>
+      {filter.isGoodWeather === true ? (
+        <>
+          <h1>{filter.condition}</h1>
+          <h2>{filter.temperature}&deg; C</h2>
+          <h2>The weather is awesome, go out and do:</h2>
+        </>
       ) : (
-        <h2>The weather is terrible, stay inside and do:</h2>
+        <>
+          <h1>{filter.condition}</h1>
+          <h2>{filter.temperature}&deg; C</h2>
+          <h2>The weather is terrible, don't go out, instead do:</h2>
+        </>
       )}
       <ul>
         {list.map((item) => {
