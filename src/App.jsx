@@ -10,7 +10,6 @@ function App() {
 
   function handleAddActivity(newActivity) {
     setActivities([...activities, { ...newActivity }]);
-    console.log(activities);
   }
 
   return (
