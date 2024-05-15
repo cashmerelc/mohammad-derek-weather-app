@@ -9,9 +9,9 @@ function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
-  const [isGoodWeather, setIsGoodWeather] = useState(true);
+  const [weather, setWeather] = useState({});
   // const [weather, setWeather] = useLocalStorageState("weather", {});
-  console.log(isGoodWeather);
+  console.log(weather);
 
   // let isGoodWeather = true;
 
@@ -23,13 +23,12 @@ function App() {
         );
         let weatherData = await response.json();
         console.log("weather", weatherData);
-        setIsGoodWeather(weatherData.isGoodWeather);
+        setWeather(weatherData);
       } catch (err) {
         console.log(
           "Failed to fetch weather data, defaulting weather to bad weather: ",
           err
         );
-        setIsGoodWeather(false);
       }
     }
 
@@ -47,7 +46,7 @@ function App() {
 
   function handleFilteredActivities() {
     return activities.filter((activity) => {
-      return activity.isForGoodWeather === isGoodWeather;
+      return activity.isForGoodWeather === weather.isGoodWeather;
     });
   }
   const filteredActivities = handleFilteredActivities();
@@ -56,7 +55,7 @@ function App() {
     <>
       <List
         list={filteredActivities}
-        filter={isGoodWeather}
+        filter={weather}
         onDeleteActivity={handleDeleteActivity}
       />
 
