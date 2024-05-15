@@ -26,8 +26,13 @@ export function List({ list, filter, onDeleteActivity }) {
         {list.map((item) => {
           return (
             <li key={item.id}>
-              <p>{item.name}</p>
-              <button onClick={() => onDeleteActivity(item.id)}>x</button>
+              <p className="list__activityName">{item.name}</p>
+              <button
+                className="list__delete"
+                onClick={() => onDeleteActivity(item.id)}
+              >
+                x
+              </button>
             </li>
           );
         })}
